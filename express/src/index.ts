@@ -33,11 +33,6 @@ app.post('/login', async (req:Request, res:Response, next:NextFunction)=>{
     }
 })
 
-
-
-
-
-
 app.use((err,req,res,next)=>{
 
     if (err.statusCode){

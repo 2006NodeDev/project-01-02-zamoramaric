@@ -4,7 +4,7 @@ import axios from 'axios'
 export const siteLoginClient = axios.create({
 baseURL: 'http://localhost:2006',
 headers:{
-'Content-type': 'application/json'
+'Content-Type': 'application/json'
 },
 withCredentials:true
 })

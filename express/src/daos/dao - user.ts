@@ -58,7 +58,7 @@ export async function getUserByUsernameAndPassword(username:string, password:str
                 u."email" ,
                 r."role_id" , 
                 r."role" 
-                from ersapi.users u left join ersapi.roles r on u."role" = r.role_id 
+                from project1.users u left join project1.roles r on u."role" = r.role_id 
                 where u."username" = $1 and u."password" = $2;`,
             [username, password])// this is a parameterized query. In the query itself we use $1 to specify a parameter, then we fill in a value using an array as the second arg of the query function
                 // pg library automatically sanitizes input for these params
