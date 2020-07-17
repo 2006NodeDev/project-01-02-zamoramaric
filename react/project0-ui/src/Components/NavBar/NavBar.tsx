@@ -77,11 +77,12 @@ export const NavBarComponent: FunctionComponent<any> = (props) =>{
                 }}
                 open={open}
                 onClose={handleClose}
-              >
+              >              
+                <MenuItem onClick={handleClose}> <Link to='/Login' > Login </Link> </MenuItem>
+                <MenuItem onClick={handleClose}> <Link to='/CreateAccount' > Create Account </Link> </MenuItem>
                 <MenuItem onClick={handleClose}> <Link to='/MyProfile' > My Profile </Link> </MenuItem>
                 <MenuItem onClick={handleClose}> <Link to='/EditMyProfile' > Edit My Profile </Link> </MenuItem>
                 <MenuItem onClick={handleClose}> <Link to='/ViewMyDestin' > My Desinations </Link> </MenuItem>
-                <MenuItem onClick={handleClose}> <Link to='/Login' > Login </Link> </MenuItem>
               </Menu>
             </div>
           )}

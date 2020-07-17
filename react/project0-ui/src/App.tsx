@@ -23,6 +23,7 @@ function App() {
         <NavBarComponent/>
         <Route path= '/' component={WelcomeComponent}/>
         <Route path='/login' render={(props)=> (<LoginComponent changeCurrentUser= {changeCurrentUser}{...props}/>)}/>
+        <Route path='/CreateAccount'> <MyProfileComponent user = {currentUser} /> </Route>
         <Route path='/EditMyProfile'> <EditProfileComponent user = {currentUser} /> </Route>
         <Route path='/ViewMyDestin'> <ViewMyDestinComponent user = {currentUser} /> </Route>
         <Route path='/MyProfile'> <MyProfileComponent user = {currentUser} /> </Route>
