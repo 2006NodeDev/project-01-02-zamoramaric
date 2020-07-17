@@ -1,8 +1,8 @@
 import { siteLoginClient } from "."
 
 
-
-export const SiteLogin = async(username:string, password:string) =>{
+//:Promise<User> 
+export const SiteLogin = async(username:string, password:string)=>{
     let credentials = {
         username,
         password

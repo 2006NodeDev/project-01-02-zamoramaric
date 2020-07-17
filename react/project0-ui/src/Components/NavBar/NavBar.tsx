@@ -11,10 +11,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 //import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-
-
-
-
+import {Link} from 'react-router-dom'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -81,9 +78,10 @@ export const NavBarComponent: FunctionComponent<any> = (props) =>{
                 open={open}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
-                <MenuItem onClick={handleClose}> Login </MenuItem>
+                <MenuItem onClick={handleClose}> <Link to='/MyProfile' > My Profile </Link> </MenuItem>
+                <MenuItem onClick={handleClose}> <Link to='/EditMyProfile' > Edit My Profile </Link> </MenuItem>
+                <MenuItem onClick={handleClose}> <Link to='/ViewMyDestin' > My Desinations </Link> </MenuItem>
+                <MenuItem onClick={handleClose}> <Link to='/Login' > Login </Link> </MenuItem>
               </Menu>
             </div>
           )}

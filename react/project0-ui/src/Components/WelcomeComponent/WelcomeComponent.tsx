@@ -97,8 +97,9 @@ export function WelcomeComponent(props:any){
     return (
         //there must be one root level tag in the jsx
         <div className={classes.root}>
+        <h1 > Welcome to Travel Destinations </h1>
 
-        <h1>  We hope to help you find your next vacation destination in the US!</h1>
+        <h2>  We hope to help you find your next vacation destination in the US!</h2>
         {images.map((image) => (
         <ButtonBase
           focusRipple

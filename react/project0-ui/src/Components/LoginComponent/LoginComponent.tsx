@@ -29,14 +29,16 @@ const useStyles = makeStyles((theme) => ({
   },
   
 }));
-
+interface LoginProps{
+  changeCurrentUser:(newUser:any) => void
+}
 export const LoginComponent:FunctionComponent<any> = (props) => {
     
   const classes = useStyles();
 
   const [username, changeUsername] = useState('')  //2 bits of state from react
   const [password, changePassword] = useState('') //one for username and one for password
-  const [currentUser, changeCurrentUser] = useState(null)
+  //const [currentUser, changeCurrentUser] = useState(null)
 
  const updateUsername = (event:any) =>{
         event.preventDefault(
@@ -51,7 +53,7 @@ export const LoginComponent:FunctionComponent<any> = (props) => {
  const loginSubmit = async (e:SyntheticEvent)=>{
         e.preventDefault()
         let res = await SiteLogin(username, password)
-        changeCurrentUser(res)
+        props.changeCurrentUser(res)
         changePassword('')
     }
    
