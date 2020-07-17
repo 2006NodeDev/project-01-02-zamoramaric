@@ -36,7 +36,7 @@ export const LoginComponent:FunctionComponent<any> = (props) => {
 
   const [username, changeUsername] = useState('')  //2 bits of state from react
   const [password, changePassword] = useState('') //one for username and one for password
-
+  const [currentUser, changeCurrentUser] = useState(null)
 
  const updateUsername = (event:any) =>{
         event.preventDefault(
@@ -48,9 +48,10 @@ export const LoginComponent:FunctionComponent<any> = (props) => {
         event.preventDefault()
         changePassword(event.currentTarget.value)
     }
- const loginSubmit = (e:SyntheticEvent)=>{
+ const loginSubmit = async (e:SyntheticEvent)=>{
         e.preventDefault()
-        SiteLogin(username, password)
+        let res = await SiteLogin(username, password)
+        changeCurrentUser(res)
         changePassword('')
     }
    
