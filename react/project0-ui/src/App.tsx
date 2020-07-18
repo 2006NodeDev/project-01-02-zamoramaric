@@ -6,7 +6,7 @@ import {WelcomeComponent} from './Components/WelcomeComponent/WelcomeComponent'
 //import {CreateAcctComponent} from './Components/CreateAcctComponent/CreateAcctComponent'
 import {EditProfileComponent} from './Components/EditProfileComponent/EditProfileComponent'
 import {ViewMyDestinComponent} from './Components/ViewMyDestinComponent/ViewMyDestinComponent'
-import {MyProfileComponent} from './Components/MyProfileComponent/MyProfileComponent'
+//import {MyProfileComponent} from './Components/MyProfileComponent/MyProfileComponent'
 import {ViewMyProfileComponent} from './Components/ViewMyProfileComponent/ViewMyProfileComponent'
 
 //        <Route path='/CreateAccount'> <CreateAcctComponent user = {currentUser} /> </Route>

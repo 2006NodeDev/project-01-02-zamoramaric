@@ -26,8 +26,6 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   }),
 );
-
-
 export const NavBarComponent: FunctionComponent<any> = (props) =>{
   const classes = useStyles();
   const [auth] = React.useState(true);
@@ -37,11 +35,16 @@ export const NavBarComponent: FunctionComponent<any> = (props) =>{
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
-
   const handleClose = () => {
     setAnchorEl(null);
   };
-
+let menuItems = []
+menuItems.push(<MenuItem onClick={handleClose}> <Link to='/Login' > Login </Link> </MenuItem>)
+if (props.user){
+  menuItems.push([<MenuItem onClick={handleClose}> <Link to= {`/MyProfile/${(props.user)?props.user.userId : '0' }`} > My Profile </Link> </MenuItem>,
+  <MenuItem onClick={handleClose}> <Link to='/EditMyProfile' > Edit My Profile </Link> </MenuItem>,
+  <MenuItem onClick={handleClose}> <Link to='/ViewMyDestin' > My Desinations </Link> </MenuItem>])
+}
 
     return (
          <div className={classes.root}>
@@ -66,29 +69,29 @@ export const NavBarComponent: FunctionComponent<any> = (props) =>{
               <Menu
                 id="menu-appbar"
                 anchorEl={anchorEl}
+                keepMounted
                 anchorOrigin={{
                   vertical: 'top',
                   horizontal: 'right',
+
                 }}
-                keepMounted
                 transformOrigin={{
                   vertical: 'top',
                   horizontal: 'right',
                 }}
                 open={open}
-                onClose={handleClose}
-              >              
-                <MenuItem onClick={handleClose}> <Link to='/Login' > Login </Link> </MenuItem>
-                <MenuItem onClick={handleClose}> <Link to='/CreateAccount' > Create Account </Link> </MenuItem>
-                <MenuItem onClick={handleClose}> <Link to= {`/MyProfile/${(props.user)?props.user.userId : '0' }`} > My Profile </Link> </MenuItem>
-                <MenuItem onClick={handleClose}> <Link to='/EditMyProfile' > Edit My Profile </Link> </MenuItem>
-                <MenuItem onClick={handleClose}> <Link to='/ViewMyDestin' > My Desinations </Link> </MenuItem>
+                onClose={handleClose}> 
+                
+                {menuItems}
+                          
               </Menu>
             </div>
           )}
         </Toolbar>
-      </AppBar>
+      </AppBar>.
     </div>
         
     )
 }
+
+//  <MenuItem onClick={handleClose}> <Link to='/CreateAccount' > Create Account </Link> </MenuItem>

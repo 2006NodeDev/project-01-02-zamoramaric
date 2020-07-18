@@ -23,8 +23,8 @@ export async function getUserById(id: number):Promise<User> {
         u."email",
         r."role_id", 
         r."role" 
-     from ersapi.users u 
-    join ersapi.roles r 
+     from project1.users u 
+    join project1.roles r 
      on u."role" = r."role_id" 
        where u."user_id"= $1;`, [id])// this is a parameterized query. In the query itself we use $1 to specify a parameter, then we fill in a value using an array as the second arg of the query function
                 // pg library automatically sanitizes input for these params, [id]
@@ -97,7 +97,7 @@ export async function getAllUsers():Promise<User[]> {
         u."email",
         r."role_id", 
         r."role" 
-        from ersapi.users u left join ersapi.roles r on u."role" = r.role_id;`)
+        from project1.users u left join project1.roles r on u."role" = r.role_id;`)
         return results.rows.map(UserDTOtoUserConver)//return the rows
        // return UserDTOtoUserConver(results.rows[0])//there should only ever be one row
     } catch (e) {
@@ -118,39 +118,39 @@ export async function UpdatesToUser(updatedUserInfo:User):Promise<User> {
         await client.query('BEGIN;')
 
         if(updatedUserInfo.username) {
-            await client.query(`update ersapi.users set "username" = $1 
+            await client.query(`update project1.users set "username" = $1 
                                     where "user_id" = $2;`, 
                                     [updatedUserInfo.username, updatedUserInfo.userId])
         }
         if(updatedUserInfo.password) {
-            await client.query(`update ersapi.users set "password" = $1 
+            await client.query(`update project1.users set "password" = $1 
                                     where "user_id" = $2;`, 
                                     [updatedUserInfo.password, updatedUserInfo.userId])
         }
         if(updatedUserInfo.firstName) {
-            await client.query(`update ersapi.users set "firstName" = $1 
+            await client.query(`update project1.users set "firstName" = $1 
                                     where "user_id" = $2;`, 
                                     [updatedUserInfo.firstName, updatedUserInfo.userId])
         }
         if(updatedUserInfo.lastName) {
-            await client.query(`update ersapi.users set "lastName" = $1 
+            await client.query(`update project1.users set "lastName" = $1 
                                     where "user_id" = $2;`, 
                                     [updatedUserInfo.lastName, updatedUserInfo.userId])
         }
         if(updatedUserInfo.email) {
-            await client.query(`update ersapi.users set "email" = $1 
+            await client.query(`update project1.users set "email" = $1 
                                     where "user_id" = $2;`, 
                                     [updatedUserInfo.email, updatedUserInfo.userId])
         }
         if(updatedUserInfo.role) {
-            let roleId = await client.query(`select r."role_id" from ersapi.roles r 
+            let roleId = await client.query(`select r."role_id" from project1.roles r 
                                         where r."role" = $1`,
                                         [updatedUserInfo.role])
             if(roleId.rowCount === 0) {
                 throw new Error('Role Not Found')
             }
             roleId = roleId.rows[0].role_id
-            await client.query(`update ersapi.users set "role" = $1 
+            await client.query(`update project1.users set "role" = $1 
                                     where "user_id" = $2;`, 
                                     [roleId, updatedUserInfo.userId])
         }

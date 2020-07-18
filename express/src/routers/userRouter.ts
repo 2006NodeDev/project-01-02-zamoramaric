@@ -1,17 +1,18 @@
 import express, { Request, Response, NextFunction } from 'express'
-import { authenticationMiddleware } from '../middleware/authent-middleware'
+//import { authenticationMiddleware } from '../middleware/authent-middleware'
 import { getUserById,getAllUsers,UpdatesToUser,saveNewUser } from '../daos/dao - user'
 //import {UserNewInputError} from '../errors/UserInputError'
-import {authorizationMiddleware} from '../middleware/authoriz-middleware'
+//import {authorizationMiddleware} from '../middleware/authoriz-middleware'
 import { User } from '../models/User'
 import {UserInputError} from '../errors/UserInputError'
 
 export const userRouter = express.Router() //creating the userRouter variable to use as a router 
 
-userRouter.use(authenticationMiddleware)
+//userRouter.use(authenticationMiddleware)
 
 //get by id - using the get verb to find a user through an id
-userRouter.get('/:id', authorizationMiddleware(['admin', 'Finanical Manager']), async (req: Request, res: Response, next: NextFunction) => {
+userRouter.get('/:id', async (req: Request, res: Response, next: NextFunction) => {
+    //, authorizationMiddleware(['admin', 'Finanical Manager'])
     let { id } = req.params
     if (isNaN(+id)) {
         // responding with a 400 error:"Id needs to be a number"
@@ -28,7 +29,8 @@ userRouter.get('/:id', authorizationMiddleware(['admin', 'Finanical Manager']), 
 //authorizMiddleware([//get
 
 //get all users
-userRouter.get('/',  authorizationMiddleware(['admin', 'Finanical Manager']),async (req:Request, res:Response, next:NextFunction)=>{
+userRouter.get('/', async (req:Request, res:Response, next:NextFunction)=>{
+    //authorizationMiddleware(['admin', 'Finanical Manager']),
 try { 
     let allUsers = await getAllUsers()
     res.json(allUsers)
@@ -39,7 +41,8 @@ try {
 })
 
 //update user record
-userRouter.patch('/', authorizationMiddleware(['admin']), async (req:Request, res:Response, next:NextFunction) => {
+userRouter.patch('/', async (req:Request, res:Response, next:NextFunction) => {
+    // authorizationMiddleware(['admin']),
     let { userId,
         username,
         password,
