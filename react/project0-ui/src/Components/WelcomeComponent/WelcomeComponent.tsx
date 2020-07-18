@@ -5,15 +5,20 @@ import Typography from '@material-ui/core/Typography';
 
 const images = [
   {
-    url: '/static/images/grid-list/breakfast.jpg',
+    url: 'static/images/find destination.png',
     title: 'Find Destination',
-    width: '50%',
+    width: '33.3%',
   },
   {
-    url: '/static/images/grid-list/burgers.jpg',
+    url: 'static/images/login.png',
     title: 'Login',
-    width: '50%',
+    width: '33.3%',
   },
+  {
+  url: '/images/CreateAcct.png',
+  title: 'Create Account',
+  width: '33.3%',
+},
 ];
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -99,7 +104,7 @@ export function WelcomeComponent(props:any){
         <div className={classes.root}>
         <h1 > Welcome to Travel Destinations </h1>
 
-        <h2>  We hope to help you find your next vacation destination in the US!</h2>
+        <h1>  We hope to help you find your next vacation destination in the US! </h1>
         {images.map((image) => (
         <ButtonBase
           focusRipple

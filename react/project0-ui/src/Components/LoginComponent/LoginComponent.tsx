@@ -6,6 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
 import { Typography, Container, CssBaseline } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { RouteComponentProps } from 'react-router';
 //import Avatar from '@material-ui/core/Avatar';
 
 
@@ -29,7 +30,8 @@ const useStyles = makeStyles((theme) => ({
   },
   
 }));
-interface LoginProps{
+
+interface LoginProps extends RouteComponentProps{
   changeCurrentUser:(newUser:any) => void
 }
 export const LoginComponent:FunctionComponent<any> = (props) => {
@@ -55,6 +57,7 @@ export const LoginComponent:FunctionComponent<any> = (props) => {
         let res = await SiteLogin(username, password)
         props.changeCurrentUser(res)
         changePassword('')
+        props.history.push('/MyProfile')
     }
    
     

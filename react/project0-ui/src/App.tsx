@@ -7,6 +7,9 @@ import {WelcomeComponent} from './Components/WelcomeComponent/WelcomeComponent'
 import {EditProfileComponent} from './Components/EditProfileComponent/EditProfileComponent'
 import {ViewMyDestinComponent} from './Components/ViewMyDestinComponent/ViewMyDestinComponent'
 import {MyProfileComponent} from './Components/MyProfileComponent/MyProfileComponent'
+//        <Route path='/CreateAccount'> <CreateAcctComponent user = {currentUser} /> </Route>
+//<Route path='/MyProfile'> <MyProfileComponent user = {currentUser} /> </Route>
+//        <MyProfileComponent user={currentUser} />
 
 
 
@@ -21,13 +24,12 @@ function App() {
 
         <Router>
         <NavBarComponent/>
-        <Route path= '/' component={WelcomeComponent}/>
+        <Route exact path = '/' component={WelcomeComponent}/>
         <Route path='/login' render={(props)=> (<LoginComponent changeCurrentUser= {changeCurrentUser}{...props}/>)}/>
-        <Route path='/CreateAccount'> <MyProfileComponent user = {currentUser} /> </Route>
         <Route path='/EditMyProfile'> <EditProfileComponent user = {currentUser} /> </Route>
         <Route path='/ViewMyDestin'> <ViewMyDestinComponent user = {currentUser} /> </Route>
         <Route path='/MyProfile'> <MyProfileComponent user = {currentUser} /> </Route>
-       
+
         </Router>
     </div>
   );
