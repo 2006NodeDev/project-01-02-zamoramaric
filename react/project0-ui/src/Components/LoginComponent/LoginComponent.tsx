@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useState, SyntheticEvent} from 'react'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
-import {SiteLogin} from '../../Remote/loginsite-app/SiteLogin'
+import {SiteLogin} from '../../Remote/project1-app-api/SiteLogin'
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
 import { Typography, Container, CssBaseline } from '@material-ui/core';
@@ -57,10 +57,8 @@ export const LoginComponent:FunctionComponent<any> = (props) => {
         let res = await SiteLogin(username, password)
         props.changeCurrentUser(res)
         changePassword('')
-        props.history.push('/MyProfile')
+        props.history.push('/')
     }
-   
-    
 //autoComplete="off" onSubmit={loginSubmit}
     return (
 

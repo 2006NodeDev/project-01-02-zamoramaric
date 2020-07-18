@@ -7,10 +7,12 @@ import {WelcomeComponent} from './Components/WelcomeComponent/WelcomeComponent'
 import {EditProfileComponent} from './Components/EditProfileComponent/EditProfileComponent'
 import {ViewMyDestinComponent} from './Components/ViewMyDestinComponent/ViewMyDestinComponent'
 import {MyProfileComponent} from './Components/MyProfileComponent/MyProfileComponent'
+import {ViewMyProfileComponent} from './Components/ViewMyProfileComponent/ViewMyProfileComponent'
+
 //        <Route path='/CreateAccount'> <CreateAcctComponent user = {currentUser} /> </Route>
 //<Route path='/MyProfile'> <MyProfileComponent user = {currentUser} /> </Route>
 //        <MyProfileComponent user={currentUser} />
-
+//        <Route path='/MyProfile'> <MyProfileComponent user = {currentUser} /> </Route>
 
 
 import {User} from './Models/User'
@@ -23,13 +25,12 @@ function App() {
     <div className="App">
 
         <Router>
-        <NavBarComponent/>
+        <NavBarComponent user ={currentUser}/>
         <Route exact path = '/' component={WelcomeComponent}/>
         <Route path='/login' render={(props)=> (<LoginComponent changeCurrentUser= {changeCurrentUser}{...props}/>)}/>
         <Route path='/EditMyProfile'> <EditProfileComponent user = {currentUser} /> </Route>
         <Route path='/ViewMyDestin'> <ViewMyDestinComponent user = {currentUser} /> </Route>
-        <Route path='/MyProfile'> <MyProfileComponent user = {currentUser} /> </Route>
-
+        <Route path='/MyProfile/:userId' component = {ViewMyProfileComponent} /> 
         </Router>
     </div>
   );

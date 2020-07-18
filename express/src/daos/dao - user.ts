@@ -54,7 +54,9 @@ export async function getUserByUsernameAndPassword(username:string, password:str
         //send the query
         let results = await client.query(`select u."user_id", 
                 u."username" , 
-                u."password" ,                 
+                u."password" ,   
+                u."firstName" ,
+                u."lastName" ,              
                 u."email" ,
                 r."role_id" , 
                 r."role" 

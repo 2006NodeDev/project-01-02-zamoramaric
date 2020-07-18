@@ -80,7 +80,7 @@ export const NavBarComponent: FunctionComponent<any> = (props) =>{
               >              
                 <MenuItem onClick={handleClose}> <Link to='/Login' > Login </Link> </MenuItem>
                 <MenuItem onClick={handleClose}> <Link to='/CreateAccount' > Create Account </Link> </MenuItem>
-                <MenuItem onClick={handleClose}> <Link to='/MyProfile' > My Profile </Link> </MenuItem>
+                <MenuItem onClick={handleClose}> <Link to= {`/MyProfile/${(props.user)?props.user.userId : '0' }`} > My Profile </Link> </MenuItem>
                 <MenuItem onClick={handleClose}> <Link to='/EditMyProfile' > Edit My Profile </Link> </MenuItem>
                 <MenuItem onClick={handleClose}> <Link to='/ViewMyDestin' > My Desinations </Link> </MenuItem>
               </Menu>

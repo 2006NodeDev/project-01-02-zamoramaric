@@ -1,4 +1,4 @@
-import { siteLoginClient } from "."
+import { Project1Client } from "."
 
 
 //:Promise<User> 
@@ -8,7 +8,7 @@ export const SiteLogin = async(username:string, password:string)=>{
         password
     }
     try{
-    let response = await siteLoginClient.post('/login', credentials)
+    let response = await Project1Client.post('/login', credentials)
     console.log(response);
     return response.data
     }

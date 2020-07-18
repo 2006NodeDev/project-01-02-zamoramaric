@@ -5,8 +5,12 @@ import Typography from '@material-ui/core/Typography'
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import { TitleComponent } from '../TitleComponent/TitleComponent'
-import { CssBaseline, Container, Grid } from '@material-ui/core';
+import { CssBaseline, Container, Grid, Button } from '@material-ui/core';
 
+/*<Typography variant= 'body1'>
+                      Role: {props.user?.role}
+                    </Typography>
+                    */
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -21,7 +25,7 @@ const useStyles = makeStyles((theme: Theme) =>
       },
     },
     paper:{
-        backgroundColor:'grey'
+        backgroundColor:'white'
     }
 
   }),
@@ -29,7 +33,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 
 interface MyProfileProps{
-    user:User|null
+    user:User
 }
 //export const CreateAcctComponent {
     export const MyProfileComponent:FunctionComponent<MyProfileProps> = (props)=>{
@@ -46,32 +50,28 @@ interface MyProfileProps{
             <Grid item>
             <h1>My Profile </h1>
 
-                 <TitleComponent size='large' title={`Welcome ${props.user.username}!`} />
-           
-
+                <TitleComponent size='large' title={`Welcome ${props.user.username}!`} />
                 <Paper className = {classes.paper} elevation={4}>
                     
                     <Typography variant= 'body1'>
-                      Username: {props.user?.username}
+                      Username: {props.user.username}
                     </Typography>
 
                     <Typography variant= 'body1'>
-                      {props.user?.firstName}
+                      First Name: {props.user.firstName}
                     </Typography>
 
                     <Typography variant= 'body1'>
-                        {props.user?.lastName}
+                       Last Name: {props.user.lastName}
                     </Typography>
 
                     <Typography variant= 'body1'>
-                      Email: {props.user?.email}
+                      Email: {props.user.email}
                     </Typography>
-
+                    <Button variant="outlined" color= 'inherit'> Edit </Button>
+                   
                 </Paper>
                 </Grid>
-
-
-
             </div>
             </Container>
 
