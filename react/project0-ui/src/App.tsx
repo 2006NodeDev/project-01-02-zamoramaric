@@ -3,12 +3,13 @@ import './App.css';
 import {NavBarComponent} from './Components/NavBar/NavBar'
 import {LoginComponent} from './Components/LoginComponent/LoginComponent'
 import {WelcomeComponent} from './Components/WelcomeComponent/WelcomeComponent'
-//import {CreateAcctComponent} from './Components/CreateAcctComponent/CreateAcctComponent'
+import {CreateAcctComponent} from './Components/CreateAcctComponent/CreateAcctComponent'
 import {EditProfileComponent} from './Components/EditProfileComponent/EditProfileComponent'
 import {ViewMyDestinComponent} from './Components/ViewMyDestinComponent/ViewMyDestinComponent'
 //import {MyProfileComponent} from './Components/MyProfileComponent/MyProfileComponent'
 import {ViewMyProfileComponent} from './Components/ViewMyProfileComponent/ViewMyProfileComponent'
 import {AllUsersComponent} from './Components/AllUsersComponent/AllUsersComponent'
+import {AllAttractionsComponent} from './Components/AllAttractionsComponent/AllAttractionsComponent'
 
 //        <Route path='/CreateAccount'> <CreateAcctComponent user = {currentUser} /> </Route>
 //<Route path='/MyProfile'> <MyProfileComponent user = {currentUser} /> </Route>
@@ -33,6 +34,8 @@ function App() {
         <Route path='/ViewMyDestin'> <ViewMyDestinComponent user = {currentUser} /> </Route>
         <Route path='/MyProfile/:userId' component = {ViewMyProfileComponent} /> 
         <Route path='/users' component = {AllUsersComponent} />
+        <Route path='/attractions' component = {AllAttractionsComponent} />
+        <Route path='/newaccount' component = {CreateAcctComponent} />
         </Router>
     </div>
   );

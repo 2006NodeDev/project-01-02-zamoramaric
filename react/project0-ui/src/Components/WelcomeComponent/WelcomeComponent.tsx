@@ -20,7 +20,6 @@ const images = [
   width: '33.3%',
 },
 ];
-
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
