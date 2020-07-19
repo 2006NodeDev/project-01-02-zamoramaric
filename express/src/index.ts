@@ -5,6 +5,7 @@ import { BadCredentError } from './errors/BadCredError'
 import { getUserByUsernameAndPassword } from './daos/dao - user'
 import { userRouter } from './routers/userRouter'
 import { corsFilter } from './middleware/cors-filter'
+import { attractionsRouter } from './routers/attractionsRouter'
 
 const app = express()//call the express function
 app.use(express.json())//example of middleware
@@ -13,6 +14,7 @@ app.use(loggingMiddleware)
 app.use(sessionMiddleware)
 app.use(corsFilter)
 app.use('/users', userRouter)// redirect all requests on /users to the router
+app.use('/attractions', attractionsRouter)// redirect all requests on /users to the router
 
 app.post('/login', async (req:Request, res:Response, next:NextFunction)=>{
     // destructuring to see ./routers/book-router
