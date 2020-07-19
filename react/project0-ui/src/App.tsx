@@ -10,6 +10,8 @@ import {ViewMyDestinComponent} from './Components/ViewMyDestinComponent/ViewMyDe
 import {ViewMyProfileComponent} from './Components/ViewMyProfileComponent/ViewMyProfileComponent'
 import {AllUsersComponent} from './Components/AllUsersComponent/AllUsersComponent'
 import {AllAttractionsComponent} from './Components/AllAttractionsComponent/AllAttractionsComponent'
+import {ToastContainer} from 'react-toastify'
+
 
 //        <Route path='/CreateAccount'> <CreateAcctComponent user = {currentUser} /> </Route>
 //<Route path='/MyProfile'> <MyProfileComponent user = {currentUser} /> </Route>
@@ -36,6 +38,7 @@ function App() {
         <Route path='/users' component = {AllUsersComponent} />
         <Route path='/attractions' component = {AllAttractionsComponent} />
         <Route path='/newaccount' component = {CreateAcctComponent} />
+        <ToastContainer position='bottom-right'/>
         </Router>
     </div>
   );

@@ -54,7 +54,7 @@ menuItems.push(<MenuItem onClick={handleClose}> <Link to='/Login' > Login </Link
 if (props.user && props.user.role.role === 'admin'){
   menuItems.push([<MenuItem onClick={handleClose}> <Link to= {`/MyProfile/${(props.user)?props.user.userId : '0' }`} > My Profile </Link> </MenuItem>,
   <MenuItem onClick={handleClose}> <Link to='/EditMyProfile' > Edit My Profile </Link> </MenuItem>,
-  <MenuItem onClick={handleClose}> <Link to='/ViewMyDestin' > My Desinations </Link> </MenuItem>, <MenuItem onClick={handleClose}><Link to='/attractions' > View All Attractions </Link> </MenuItem>])
+  <MenuItem onClick={handleClose}> <Link to='/ViewMyDestin' > My Desinations </Link> </MenuItem>, <MenuItem onClick={handleClose}><Link to='/attractions' > View All Attractions </Link> </MenuItem>],<MenuItem onClick={handleClose}> <Link to='/newaccount' > Create New Account </Link> </MenuItem>)
 }
 if (props.user && props.user.role.role === 'SiteMember'){
   menuItems.push(<MenuItem onClick={handleClose}> <Link to='/Users' > All Users </Link> </MenuItem>, 
@@ -69,7 +69,7 @@ if (props.user && props.user.role.role === 'SiteMember'){
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            Your Next Destination Stop
+            <h2>Your Next Destination Stop</h2>
           </Typography>
           {auth && (
             <div>
