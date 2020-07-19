@@ -8,6 +8,7 @@ import {EditProfileComponent} from './Components/EditProfileComponent/EditProfil
 import {ViewMyDestinComponent} from './Components/ViewMyDestinComponent/ViewMyDestinComponent'
 //import {MyProfileComponent} from './Components/MyProfileComponent/MyProfileComponent'
 import {ViewMyProfileComponent} from './Components/ViewMyProfileComponent/ViewMyProfileComponent'
+import {AllUsersComponent} from './Components/AllUsersComponent/AllUsersComponent'
 
 //        <Route path='/CreateAccount'> <CreateAcctComponent user = {currentUser} /> </Route>
 //<Route path='/MyProfile'> <MyProfileComponent user = {currentUser} /> </Route>
@@ -31,6 +32,7 @@ function App() {
         <Route path='/EditMyProfile'> <EditProfileComponent user = {currentUser} /> </Route>
         <Route path='/ViewMyDestin'> <ViewMyDestinComponent user = {currentUser} /> </Route>
         <Route path='/MyProfile/:userId' component = {ViewMyProfileComponent} /> 
+        <Route path='/users' component = {AllUsersComponent} />
         </Router>
     </div>
   );

@@ -13,6 +13,21 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import {Link} from 'react-router-dom'
 
+
+/*
+let menuItems = []
+menuItems.push(<MenuItem onClick={handleClose}> <Link to='/Login' > Login </Link> </MenuItem>)
+if (props.user){
+  menuItems.push([<MenuItem onClick={handleClose}> <Link to= {`/MyProfile/${(props.user)?props.user.userId : '0' }`} > My Profile </Link> </MenuItem>,
+  <MenuItem onClick={handleClose}> <Link to='/EditMyProfile' > Edit My Profile </Link> </MenuItem>,
+  <MenuItem onClick={handleClose}> <Link to='/ViewMyDestin' > My Desinations </Link> </MenuItem>])
+}
+if(props.user && props.user.role === 'admin'){
+menuItems.push( <MenuItem onClick={handleClose}> <Link to='/Users' > All Users </Link> </MenuItem>)
+}
+
+*/
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -40,11 +55,21 @@ export const NavBarComponent: FunctionComponent<any> = (props) =>{
   };
 let menuItems = []
 menuItems.push(<MenuItem onClick={handleClose}> <Link to='/Login' > Login </Link> </MenuItem>)
-if (props.user){
+
+if (props.user && props.user.role.role === 'admin'){
   menuItems.push([<MenuItem onClick={handleClose}> <Link to= {`/MyProfile/${(props.user)?props.user.userId : '0' }`} > My Profile </Link> </MenuItem>,
   <MenuItem onClick={handleClose}> <Link to='/EditMyProfile' > Edit My Profile </Link> </MenuItem>,
   <MenuItem onClick={handleClose}> <Link to='/ViewMyDestin' > My Desinations </Link> </MenuItem>])
 }
+if (props.user && props.user.role.role === 'SiteMember'){
+
+  menuItems.push(<MenuItem onClick={handleClose}> <Link to='/Users' > All Users </Link> </MenuItem>, 
+  <MenuItem onClick={handleClose}> <Link to= {`/MyProfile/${(props.user)?props.user.userId : '0' }`} > My Profile </Link> </MenuItem>,
+  <MenuItem onClick={handleClose}> <Link to='/EditMyProfile' > Edit My Profile </Link> </MenuItem>)
+
+}
+
+
 
     return (
          <div className={classes.root}>
@@ -81,7 +106,7 @@ if (props.user){
                 }}
                 open={open}
                 onClose={handleClose}> 
-                
+
                 {menuItems}
                           
               </Menu>

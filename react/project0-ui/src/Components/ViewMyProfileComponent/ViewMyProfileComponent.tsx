@@ -5,6 +5,7 @@ import {MyProfileComponent} from '../MyProfileComponent/MyProfileComponent'
 import { User } from '../../Models/User'
 import { useParams } from 'react-router-dom'
 import { Project1getUserById } from '../../Remote/project1-app-api/Project1getUserById'
+import { TitleComponent } from '../TitleComponent/TitleComponent'
 //import React from 'react'
 //|| userProfile.userId !== +userId
 // || userProfile.userId !== +userId
@@ -20,7 +21,7 @@ useEffect(()=>{
     let getUser = async()=>{
         //await user userinfo and than call state 
         let userInfo = await Project1getUserById(userId)
-        changeUserProfile(userId)
+        changeUserProfile(userInfo)
     }
     //havent gotten user profile yet
     if(!userProfile|| userProfile.userId !== +userId){
@@ -28,7 +29,10 @@ useEffect(()=>{
     }
 })
 return (
+
+
 (userProfile)?
+
 <MyProfileComponent user={userProfile} />
 :
 <div>

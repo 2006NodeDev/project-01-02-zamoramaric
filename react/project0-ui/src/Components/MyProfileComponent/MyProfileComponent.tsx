@@ -41,10 +41,10 @@ interface MyProfileProps{
     let classes = useStyles();
 
         return(
-        (props.user) ?
+      //  (props.user) ?
 
         <Container component="main" maxWidth="xs">
-      <CssBaseline />
+        <CssBaseline />
             <div className={classes.root}>
                 
             <Grid item>
@@ -68,6 +68,7 @@ interface MyProfileProps{
                     <Typography variant= 'body1'>
                       Email: {props.user.email}
                     </Typography>
+                    
                     <Button variant="outlined" color= 'inherit'> Edit </Button>
                    
                 </Paper>
@@ -75,8 +76,8 @@ interface MyProfileProps{
             </div>
             </Container>
 
-       :
-        <Redirect to ='/login'/>
+      // :
+       // <Redirect to ='/login'/>
         //
         )
    
