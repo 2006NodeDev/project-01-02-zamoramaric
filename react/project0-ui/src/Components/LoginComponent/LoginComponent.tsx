@@ -47,7 +47,6 @@ export const LoginComponent:FunctionComponent<any> = (props) => {
         changeUsername(event.currentTarget.value)
         )
     }
-
  const updatePassword = (event:any) => {
         event.preventDefault()
         changePassword(event.currentTarget.value)
@@ -78,7 +77,7 @@ export const LoginComponent:FunctionComponent<any> = (props) => {
           <Grid container>
 
           <Grid item>
-              <Link href="#" variant="body2">
+              <Link href="/newaccount" variant="body2">
               {"Don't have an account? Sign Up"}
               </Link>
           </Grid>

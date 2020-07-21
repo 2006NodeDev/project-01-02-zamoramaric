@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useEffect, useState} from 'react'
 import {project0GetAllAttractions} from '../../Remote/project1-app-api/project0GetAllAttractions'
 import { AttractionComponent } from '../AttractionComponent/AttractionComponent'
+import { TitleComponent } from '../TitleComponent/TitleComponent'
 
 export const AllAttractionsComponent:FunctionComponent<any> = (props) => {
 
@@ -28,9 +29,10 @@ export const AllAttractionsComponent:FunctionComponent<any> = (props) => {
     let attractionDisplay = allAttractions.map((attraction)=>{
        return <AttractionComponent attraction = {attraction} />
     })
-
+    
 return (
 <div>
+    <TitleComponent size='large' title={`US Attractions Per State`} />
     {attractionDisplay}
 </div>
 

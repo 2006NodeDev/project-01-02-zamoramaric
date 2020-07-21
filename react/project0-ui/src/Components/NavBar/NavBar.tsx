@@ -28,12 +28,16 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       flexGrow: 1,
+      //background : '#2E3B55'
     },
     menuButton: {
       marginRight: theme.spacing(2),
+      background : '#2E3B55'
     },
     title: {
       flexGrow: 1,
+      background : '#2E3B55'
+
     },
   }),
 );
@@ -50,6 +54,7 @@ export const NavBarComponent: FunctionComponent<any> = (props) =>{
     setAnchorEl(null);
   };
 let menuItems = []
+menuItems.push(<MenuItem onClick={handleClose}> <Link to='/' > Home </Link> </MenuItem>)
 menuItems.push(<MenuItem onClick={handleClose}> <Link to='/Login' > Login </Link> </MenuItem>)
 if (props.user && props.user.role.role === 'admin'){
   menuItems.push([<MenuItem onClick={handleClose}> <Link to= {`/MyProfile/${(props.user)?props.user.userId : '0' }`} > My Profile </Link> </MenuItem>,
@@ -69,7 +74,7 @@ if (props.user && props.user.role.role === 'SiteMember'){
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            <h2>Your Next Destination Stop</h2>
+            <h2>Your Next Vacation Destination Stop</h2>
           </Typography>
           {auth && (
             <div>

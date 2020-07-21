@@ -2,23 +2,27 @@ import React from 'react';// you have to import React from react
 import { Theme, makeStyles, createStyles } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
+import { Link } from 'react-router-dom'
+import Button from '@material-ui/core/Button';
 
 const images = [
   {
     url: 'static/images/find destination.png',
+    link: '/allatractions',
     title: 'Find Destination',
-    width: '33.3%',
-  },
-  {
-    url: 'static/images/login.png',
-    title: 'Login',
-    width: '33.3%',
-  },
-  {
-  url: '/images/CreateAcct.png',
-  title: 'Create Account',
-  width: '33.3%',
-},
+    width: '100%',
+  }
+  //,
+  //{
+    //url: 'static/images/login.png',
+    //title: 'Login',
+    //width: '33.3%',
+  //},
+  //{
+  //url: '/images/CreateAcct.png',
+  //title: 'Create Account',
+  //width: '33.3%',
+//},
 ];
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -27,6 +31,10 @@ const useStyles = makeStyles((theme: Theme) =>
       flexWrap: 'wrap',
       minWidth: 300,
       width: '100%',
+    },
+    header:{
+
+      alignItems:'center'
     },
     image: {
       position: 'relative',
@@ -94,26 +102,24 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   }),
 );
-
 export function WelcomeComponent(props:any){
     //you have to return jsx
     const classes = useStyles();
     return (
         //there must be one root level tag in the jsx
         <div className={classes.root}>
-        <h1 > Welcome to Travel Destinations </h1>
-
+        <h1 className = {classes.header}> Welcome to Travel Destinations </h1>
         <h1>  We hope to help you find your next vacation destination in the US! </h1>
         {images.map((image) => (
         <ButtonBase
+          component={Link} to="/attractions"
           focusRipple
           key={image.title}
           className={classes.image}
           focusVisibleClassName={classes.focusVisible}
           style={{
             width: image.width,
-          }}
-        >
+          }}>
           <span
             className={classes.imageSrc}
             style={{

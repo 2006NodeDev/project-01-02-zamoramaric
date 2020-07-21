@@ -38,7 +38,6 @@ interface AttractionComponentProps{
         <CssBaseline />
             <div className={classes.root}>    
             <Grid item>
-                <TitleComponent size='large' title={`US Attractions`} />
                 <Paper className = {classes.paper} elevation={4}>
                     
                     <Typography variant= 'body1'>
@@ -60,8 +59,11 @@ interface AttractionComponentProps{
                     <Typography variant= 'body1'>
                       Attraction: {props.attraction.attraction}
                     </Typography>
-                    
+                    <br></br>
                     <Button variant="outlined" color= 'inherit'> Add to My Destination Attraction List </Button>
+                    <br></br>
+                    <br></br>
+
                 </Paper>
                 </Grid>
             </div>

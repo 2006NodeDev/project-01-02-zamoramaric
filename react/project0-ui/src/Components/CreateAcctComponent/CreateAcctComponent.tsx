@@ -5,6 +5,8 @@ import { Button, TextField, Container, CssBaseline, Grid } from '@material-ui/co
 import {toast} from 'react-toastify'
 import { User } from '../../Models/User'
 import {Project1SaveNewUser} from '../../Remote/project1-app-api/Project1SaveNewUser'
+import { Redirect } from 'react-router'
+import { TitleComponent } from '../TitleComponent/TitleComponent'
 //import { read } from 'fs'
  
 
@@ -14,7 +16,6 @@ export const CreateAcctComponent:FunctionComponent<any> = (props)=>{
     let [confirmPassword, changeConfirmPassword] = useState('')
     let [firstName, changeFirstName] = useState('')
     let [lastName, changeLastName] = useState('')
-
     let [email, changeEmail] = useState('')
 
 
@@ -35,6 +36,8 @@ const submitUser = async (e:SyntheticEvent) =>{
 
         let res = await Project1SaveNewUser(newUser)
     }   
+   //<Redirect to = '/MyProfile/${(props.newUser.userId)'/>
+
 }
 const updateUsername = (e:any) => {
     e.preventDefault()
@@ -61,12 +64,15 @@ const updateEmail = (e:any) => {
     changeEmail(e.currentTarget.value)
 }
 return(
+
+   // (props.user) ?
     <Container component="main" maxWidth="xs">
     <CssBaseline />
 
     <div>
     <Grid item>
-    <h1>Create Account </h1>
+    <TitleComponent size='large' title= 'Create Account' />
+
 
     <form onSubmit={submitUser}>
     <TextField variant="outlined" margin="normal" required fullWidth id="standard-basic" label="Username" value = {username} onChange = {updateUsername} />
@@ -75,13 +81,17 @@ return(
     <TextField variant="outlined" margin="normal" required fullWidth id="standard-basic" label="First Name" value={firstName} onChange={updateFirstName} />
     <TextField variant="outlined" margin="normal" required fullWidth id="standard-basic" label="Last Name" value={lastName} onChange={updateLastName} />
     <TextField variant="outlined" margin="normal" required fullWidth id="standard-basic" type='email' label="Email" value={email} onChange={updateEmail} />
-   
+    <br /><br />
     <Button variant="contained" type='submit'>Submit</Button>
-
+    <br></br>
+    <br></br>
     </form>
     </Grid>
 
     </div>
     </Container>
+
+         //:
+      // <Redirect to = '/MyProfile/${(props.user.userId)'/>
 
 )}

@@ -48,9 +48,8 @@ interface MyProfileProps{
             <div className={classes.root}>
                 
             <Grid item>
-            <h1>My Profile </h1>
+                  <TitleComponent size='large' title={`My Profile`} />
 
-                <TitleComponent size='large' title={`Welcome ${props.user.username}!`} />
                 <Paper className = {classes.paper} elevation={4}>
                     
                     <Typography variant= 'body1'>
@@ -68,9 +67,10 @@ interface MyProfileProps{
                     <Typography variant= 'body1'>
                       Email: {props.user.email}
                     </Typography>
-                    
+                    <br></br>
                     <Button variant="outlined" color= 'inherit'> Edit </Button>
-                   
+                    <br></br>
+                    <br></br>
                 </Paper>
                 </Grid>
             </div>
@@ -78,7 +78,8 @@ interface MyProfileProps{
 
       // :
        // <Redirect to ='/login'/>
-        //
+        //            <h1>My Profile </h1>
+
         )
    
     }

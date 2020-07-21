@@ -28,8 +28,8 @@ useEffect(()=>{
         getUser()
     }
 })
-return (
 
+return (
 
 (userProfile)?
 
@@ -40,3 +40,5 @@ return (
 </div>
 )
 }
+
+//<TitleComponent size='large' title={`Welcome ${props.user.firstName}!`} />

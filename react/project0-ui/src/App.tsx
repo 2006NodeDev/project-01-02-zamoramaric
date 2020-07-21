@@ -6,7 +6,6 @@ import {WelcomeComponent} from './Components/WelcomeComponent/WelcomeComponent'
 import {CreateAcctComponent} from './Components/CreateAcctComponent/CreateAcctComponent'
 import {EditProfileComponent} from './Components/EditProfileComponent/EditProfileComponent'
 import {ViewMyDestinComponent} from './Components/ViewMyDestinComponent/ViewMyDestinComponent'
-//import {MyProfileComponent} from './Components/MyProfileComponent/MyProfileComponent'
 import {ViewMyProfileComponent} from './Components/ViewMyProfileComponent/ViewMyProfileComponent'
 import {AllUsersComponent} from './Components/AllUsersComponent/AllUsersComponent'
 import {AllAttractionsComponent} from './Components/AllAttractionsComponent/AllAttractionsComponent'
@@ -32,12 +31,13 @@ function App() {
         <NavBarComponent user ={currentUser}/>
         <Route exact path = '/' component={WelcomeComponent}/>
         <Route path='/login' render={(props)=> (<LoginComponent changeCurrentUser= {changeCurrentUser}{...props}/>)}/>
-        <Route path='/EditMyProfile'> <EditProfileComponent user = {currentUser} /> </Route>
         <Route path='/ViewMyDestin'> <ViewMyDestinComponent user = {currentUser} /> </Route>
         <Route path='/MyProfile/:userId' component = {ViewMyProfileComponent} /> 
         <Route path='/users' component = {AllUsersComponent} />
         <Route path='/attractions' component = {AllAttractionsComponent} />
         <Route path='/newaccount' component = {CreateAcctComponent} />
+        <Route path='/EditMyProfile'> <EditProfileComponent user = {currentUser} /> </Route>
+
         <ToastContainer position='bottom-right'/>
         </Router>
     </div>
@@ -45,4 +45,3 @@ function App() {
 }
 
 export default App;
-
