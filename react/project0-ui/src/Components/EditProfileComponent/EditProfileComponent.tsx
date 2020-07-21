@@ -14,43 +14,57 @@ import React from 'react'
         :
         <Redirect to ='/login'/>
         )
-   
-    }
-    
+    }    
     */
 
-    
 import React, { FunctionComponent, SyntheticEvent, useState } from 'react'
 import { Button, TextField, Container, CssBaseline, Grid, Typography } from '@material-ui/core'
-//export const CreateAcctComponent {
 import {toast} from 'react-toastify'
 import { User } from '../../Models/User'
 import {Project1EditUser} from '../../Remote/project1-app-api/Project1EditUser'
 import { Redirect, useParams } from 'react-router'
 import { Console } from 'console'
 import { TitleComponent } from '../TitleComponent/TitleComponent'
-//import { read } from 'fs'
- 
 
 export const EditProfileComponent:FunctionComponent<any> = (props)=>{
-    const {userId} = useParams()
+   const {userId} = useParams()
+     // const userId =
+
     let [username, changeUsername] = useState('')
     let [password, changePassword] = useState('')
-    let [confirmPassword, changeConfirmPassword] = useState('')
+    //let [confirmPassword, changeConfirmPassword] = useState('')
     let [firstName, changeFirstName] = useState('')
     let [lastName, changeLastName] = useState('')
     let [email, changeEmail] = useState('')
     let [role, changeRole] = useState('')
 
-
-
-const submitUser = async (e:SyntheticEvent) =>{
+    const submitUser = async (e:SyntheticEvent) =>{
     e.preventDefault()
+    let updateUser:User = {
+        userId:userId,
+        username,
+        password,
+        firstName,
+        lastName,
+        email,
+        role,
+    }
+    try{
+        await Project1EditUser(updateUser)
+        console.log(updateUser);
+        props.history.push(`/MyProfile/${userId}`)
+    }
+    catch(e){
+        console.log(e)
+    }
+
+
+    /*
     if(password !== confirmPassword){
         toast.error('Password Do Not Match')
     }else {
         let updateUser:User = {
-            userId: userId,
+            userId:userId,
             username,
             password,
             firstName,
@@ -63,9 +77,10 @@ const submitUser = async (e:SyntheticEvent) =>{
         props.history.push(`/MyProfile/${userId}`)
     }   
    //<Redirect to = '/MyProfile/${(props.newUser.userId)'/>
-
+*/
 }
 const updateUsername = (e:any) => {
+    e.preventDefault()
     if (e.currentTarget.value !== undefined) {
         changeUsername(e.currentTarget.value)
     }
@@ -73,7 +88,6 @@ const updateUsername = (e:any) => {
         changeUsername(e.currentTarget.username)
     }
 }
-
 const updatePassword = (e:any) => {
     e.preventDefault()
         if (e.currentTarget.value !== undefined) {
@@ -83,15 +97,15 @@ const updatePassword = (e:any) => {
             changePassword(e.currentTarget.password)
         }
     }
-const updateConfirmPassword = (e:any) => {
+/*const updateConfirmPassword = (e:any) => {
     e.preventDefault()
         if (e.currentTarget.value !== undefined) {
-            updateConfirmPassword(e.currentTarget.value)
+            changeConfirmPassword(e.currentTarget.value)
         }
         else {
-            updateConfirmPassword(e.currentTarget.password)
+            changeConfirmPassword(e.currentTarget.password)
         }
-    }
+    }*/
 const updateFirstName = (e:any) => {
     e.preventDefault()
     if (e.currentTarget.value !== undefined) {
@@ -110,7 +124,7 @@ const updateLastName = (e:any) => {
             changeLastName(e.currentTarget.lastName)
         }
     }
-const updateEmail = (e:any) => {
+    const updateEmail = (e:any) => {
     e.preventDefault()
         if (e.currentTarget.value !== undefined) {
             changeEmail(e.currentTarget.value)
@@ -129,19 +143,16 @@ const updateEmail = (e:any) => {
             }
         }
 return(
-
    // (props.user) ?
     <Container component="main" maxWidth="xs">
     <CssBaseline />
-
     <div>
     <Grid item>
     <TitleComponent size='large' title= 'Edit Account' />
 
     <form onSubmit={submitUser}>
     <TextField variant="outlined" margin="normal" fullWidth id="standard-basic" label="Username" value = {username} onChange = {updateUsername} />
-    <TextField variant="outlined" margin="normal" fullWidth id="standard-basic"type='password' label="Password" value = {password} onChange = {updatePassword} />
-    <TextField variant="outlined" margin="normal" fullWidth id="standard-basic"type='password' label="Confirm Password" value = {confirmPassword} onChange = {updateConfirmPassword} />
+    <TextField variant="outlined" margin="normal" fullWidth id="standard-basic"type='Password' label="Password" value = {password} onChange = {updatePassword} />
     <TextField variant="outlined" margin="normal" fullWidth id="standard-basic" label="First Name" value={firstName} onChange={updateFirstName} />
     <TextField variant="outlined" margin="normal" fullWidth id="standard-basic" label="Last Name" value={lastName} onChange={updateLastName} />
     <TextField variant="outlined" margin="normal" fullWidth id="standard-basic" type='email' label="Email" value={email} onChange={updateEmail} />
@@ -150,10 +161,8 @@ return(
     <Button variant="contained" type='submit'> Save </Button>
     <br /><br />
     <br /><br />
-
     </form>
     </Grid>
-
     </div>
     </Container>
 
@@ -163,3 +172,11 @@ return(
 )}
 
         //    //if (props.user && props.user.role.role === 'SiteMember'){
+
+        /*
+          <Typography variant= 'body1'>
+                 User Id: {props.user.userId}
+    </Typography>
+    */
+
+        //<TextField variant="outlined" margin="normal" fullWidth id="standard-basic"type='password' label="Confirm Password" value = {confirmPassword} onChange = {updateConfirmPassword} />
