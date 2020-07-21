@@ -68,7 +68,7 @@ interface MyProfileProps{
                       Email: {props.user.email}
                     </Typography>
                     <br></br>
-                    <Button variant="outlined" color= 'inherit'> Edit </Button>
+                    <Button variant="outlined" color= 'inherit' href='/EditMyProfile' > Edit </Button>
                     <br></br>
                     <br></br>
                 </Paper>

@@ -27,58 +27,16 @@ import { Console } from 'console'
 import { TitleComponent } from '../TitleComponent/TitleComponent'
 
 export const EditProfileComponent:FunctionComponent<any> = (props)=>{
-   const {userId} = useParams()
-     // const userId =
-
+    const {userId} = useParams()
     let [username, changeUsername] = useState('')
     let [password, changePassword] = useState('')
-    //let [confirmPassword, changeConfirmPassword] = useState('')
     let [firstName, changeFirstName] = useState('')
     let [lastName, changeLastName] = useState('')
     let [email, changeEmail] = useState('')
     let [role, changeRole] = useState('')
 
-    const submitUser = async (e:SyntheticEvent) =>{
-    e.preventDefault()
-    let updateUser:User = {
-        userId:userId,
-        username,
-        password,
-        firstName,
-        lastName,
-        email,
-        role,
-    }
-    try{
-        await Project1EditUser(updateUser)
-        console.log(updateUser);
-        props.history.push(`/MyProfile/${userId}`)
-    }
-    catch(e){
-        console.log(e)
-    }
+      
 
-
-    /*
-    if(password !== confirmPassword){
-        toast.error('Password Do Not Match')
-    }else {
-        let updateUser:User = {
-            userId:userId,
-            username,
-            password,
-            firstName,
-            lastName,
-            email,
-            role,
-        }
-        let res = await Project1EditUser(updateUser)
-        console.log(updateUser);
-        props.history.push(`/MyProfile/${userId}`)
-    }   
-   //<Redirect to = '/MyProfile/${(props.newUser.userId)'/>
-*/
-}
 const updateUsername = (e:any) => {
     e.preventDefault()
     if (e.currentTarget.value !== undefined) {
@@ -142,6 +100,28 @@ const updateLastName = (e:any) => {
                 changeRole(e.currentTarget.email)
             }
         }
+        const submitUser = async (e:SyntheticEvent) =>{
+            e.preventDefault()
+            let updateUser:User = {
+                userId:userId,
+                username,
+                password,
+                firstName,
+                lastName,
+                email,
+                role,
+            }
+            try{
+                await Project1EditUser(updateUser)
+                console.log(updateUser);
+                props.history.push(`/MyProfile/${userId}`)
+
+            }
+            catch(e){
+                console.log(e)
+            }
+        }
+
 return(
    // (props.user) ?
     <Container component="main" maxWidth="xs">
@@ -158,7 +138,7 @@ return(
     <TextField variant="outlined" margin="normal" fullWidth id="standard-basic" type='email' label="Email" value={email} onChange={updateEmail} />
     <TextField variant="outlined" margin="normal" fullWidth id="standard-basic" label="Role" value={role} onChange={updateRole} />
     <br /><br />
-    <Button variant="contained" type='submit'> Save </Button>
+    <Button variant="contained" type='submit'href="/EditMyProfile"> Save </Button>
     <br /><br />
     <br /><br />
     </form>
@@ -180,3 +160,4 @@ return(
     */
 
         //<TextField variant="outlined" margin="normal" fullWidth id="standard-basic"type='password' label="Confirm Password" value = {confirmPassword} onChange = {updateConfirmPassword} />
+//                props.history.push(`/MyProfile/${userId}`)

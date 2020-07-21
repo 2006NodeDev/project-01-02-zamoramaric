@@ -74,7 +74,7 @@ if (props.user && props.user.role.role === 'SiteMember'){
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            <h2>Your Next Vacation Destination Stop</h2>
+            <h2>Your Next Vacation Destination</h2>
           </Typography>
           {auth && (
             <div>
