@@ -1,21 +1,3 @@
-/*import {Redirect} from 'react-router-dom'
-import React from 'react'
-//export const CreateAcctComponent {
-    export function EditProfileComponent(props:any){
-
-
-        return(
-        (props.user) ?
-            <div>
-
-                <h1 > Welcome to Edit Profile </h1>
-
-            </div>
-        :
-        <Redirect to ='/login'/>
-        )
-    }    
-    */
 
 import React, { FunctionComponent, SyntheticEvent, useState } from 'react'
 import { Button, TextField, Container, CssBaseline, Grid, Typography } from '@material-ui/core'
@@ -58,15 +40,6 @@ const updatePassword = (e:any) => {
             changePassword(e.currentTarget.password)
         }
     }
-/*const updateConfirmPassword = (e:any) => {
-    e.preventDefault()
-        if (e.currentTarget.value !== undefined) {
-            changeConfirmPassword(e.currentTarget.value)
-        }
-        else {
-            changeConfirmPassword(e.currentTarget.password)
-        }
-    }*/
 const updateFirstName = (e:any) => {
     e.preventDefault()
     if (e.currentTarget.value !== undefined) {
@@ -117,8 +90,7 @@ const updateLastName = (e:any) => {
             try{
                 await Project1EditUser(updateUser)
                 console.log(updateUser);
-               // props.history.push(`/MyProfile/${userId}`)
-
+               props.history.push(`/MyProfile/${userId}`)
             }
             catch(e){
                 console.log(e)
@@ -131,11 +103,10 @@ return(
     <CssBaseline />
     <div>
     <Grid item>
-    <TitleComponent size='large' title= 'Edit Account' />
+    <TitleComponent size='large' title= 'Edit Profile' />
 
     <form onSubmit={submitUser}>
-    Personal ID: ${userId}
-    username {username}
+       Please enter information for the fields you'd like to update:
     <TextField variant="outlined" margin="normal" fullWidth id="standard-basic" label="Username" value = {username} onChange = {updateUsername} />
     <TextField variant="outlined" margin="normal" fullWidth id="standard-basic"type='Password' label="Password" value = {password} onChange = {updatePassword} />
     <TextField variant="outlined" margin="normal" fullWidth id="standard-basic" label="First Name" value={firstName} onChange={updateFirstName} />
@@ -153,6 +124,7 @@ return(
 
          //:
       // <Redirect to = '/MyProfile/${(props.user.userId)'/>
+       // <Redirect to = '/MyProfile/${(props.user.userId)'/>
 
 )}
 //href="/EditMyProfile"

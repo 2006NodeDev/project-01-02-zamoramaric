@@ -66,3 +66,8 @@ VALUES('Oklahoma','Oklahoma City','South','The Cave House'),
 ('Wisconsin','Madison','Midwest','U.S. Mailboat Tour on Geneva Lake'),
 ('Wyoming','Cheyenne','West','National Elk Refuge');
 
+ALTER TABLE users
+RENAME COLUMN "firstName" TO "first_name";
+
+ALTER TABLE users
+RENAME COLUMN "first_name" TO "firstName";
