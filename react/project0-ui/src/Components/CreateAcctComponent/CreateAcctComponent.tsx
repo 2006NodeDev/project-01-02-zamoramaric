@@ -35,6 +35,7 @@ const submitUser = async (e:SyntheticEvent) =>{
         }
 
         let res = await Project1SaveNewUser(newUser)
+        props.history.push(`/login`)
     }   
    //<Redirect to = '/MyProfile/${(props.newUser.userId)'/>
 

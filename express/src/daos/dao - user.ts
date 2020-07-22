@@ -158,11 +158,11 @@ export async function UpdatesToUser(updatedUserInfo:User):Promise<User> {
         await client.query('COMMIT;')
         return updatedUserInfo
     } catch (e) {
+        console.log(e);
         client && client.query('ROLLBACK;')
         if(e.message === 'Role Not Found') {
             throw new UserInputError()
         }
-        console.log(e);
         throw new Error('Unhandled Error')
     } finally {
         client && client.release()

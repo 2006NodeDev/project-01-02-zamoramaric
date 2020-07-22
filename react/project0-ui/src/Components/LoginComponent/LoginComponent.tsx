@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
 interface LoginProps extends RouteComponentProps{
   changeCurrentUser:(newUser:any) => void
 }
-export const LoginComponent:FunctionComponent<any> = (props) => {
+export const LoginComponent:FunctionComponent<LoginProps> = (props) => {
     
   const classes = useStyles();
 
@@ -56,7 +56,11 @@ export const LoginComponent:FunctionComponent<any> = (props) => {
         let res = await SiteLogin(username, password)
         props.changeCurrentUser(res)
         changePassword('')
-        props.history.push('/')
+        props.history.push(`/MyProfile/${res.userId}`)
+    }
+    const preventDefault = (e:SyntheticEvent)=>{
+      e.preventDefault()
+        props.history.push(`/newaccount`)
     }
 //autoComplete="off" onSubmit={loginSubmit}
     return (
@@ -77,7 +81,7 @@ export const LoginComponent:FunctionComponent<any> = (props) => {
           <Grid container>
 
           <Grid item>
-              <Link href="/newaccount" variant="body2">
+              <Link onClick={preventDefault} href="/newaccount" variant="body2">
               {"Don't have an account? Sign Up"}
               </Link>
           </Grid>

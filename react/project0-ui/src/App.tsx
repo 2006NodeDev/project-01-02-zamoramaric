@@ -36,7 +36,7 @@ function App() {
         <Route path='/users' component = {AllUsersComponent} />
         <Route path='/attractions' component = {AllAttractionsComponent} />
         <Route path='/newaccount' component = {CreateAcctComponent} />
-        <Route path='/EditMyProfile'> <EditProfileComponent user = {currentUser} /> </Route>
+        <Route path='/EditMyProfile/:userId'component = {EditProfileComponent} />
 
         <ToastContainer position='bottom-right'/>
         </Router>
@@ -45,3 +45,5 @@ function App() {
 }
 
 export default App;
+
+//user = {currentUser}

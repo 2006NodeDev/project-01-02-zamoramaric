@@ -22,21 +22,24 @@ import { Button, TextField, Container, CssBaseline, Grid, Typography } from '@ma
 import {toast} from 'react-toastify'
 import { User } from '../../Models/User'
 import {Project1EditUser} from '../../Remote/project1-app-api/Project1EditUser'
-import { Redirect, useParams } from 'react-router'
-import { Console } from 'console'
+import { useParams } from 'react-router-dom'
 import { TitleComponent } from '../TitleComponent/TitleComponent'
 
+//interface UserProps{
+    //user:User
+//}
 export const EditProfileComponent:FunctionComponent<any> = (props)=>{
-    const {userId} = useParams()
+   // let userId = props.user.userId
+    let {userId} = useParams()
+  //menuItems.push([<MenuItem onClick={handleClose}> <Link to= {`/MyProfile/${(props.user)?props.user.userId : '0' }`} > My Profile </Link> </MenuItem>,
+ // const userId = props.user.userId
     let [username, changeUsername] = useState('')
     let [password, changePassword] = useState('')
     let [firstName, changeFirstName] = useState('')
     let [lastName, changeLastName] = useState('')
     let [email, changeEmail] = useState('')
     let [role, changeRole] = useState('')
-
-      
-
+    
 const updateUsername = (e:any) => {
     e.preventDefault()
     if (e.currentTarget.value !== undefined) {
@@ -103,7 +106,7 @@ const updateLastName = (e:any) => {
         const submitUser = async (e:SyntheticEvent) =>{
             e.preventDefault()
             let updateUser:User = {
-                userId:userId,
+                userId: userId,
                 username,
                 password,
                 firstName,
@@ -114,14 +117,14 @@ const updateLastName = (e:any) => {
             try{
                 await Project1EditUser(updateUser)
                 console.log(updateUser);
-                props.history.push(`/MyProfile/${userId}`)
+               // props.history.push(`/MyProfile/${userId}`)
 
             }
             catch(e){
                 console.log(e)
             }
         }
-
+//:userId
 return(
    // (props.user) ?
     <Container component="main" maxWidth="xs">
@@ -131,6 +134,8 @@ return(
     <TitleComponent size='large' title= 'Edit Account' />
 
     <form onSubmit={submitUser}>
+    Personal ID: ${userId}
+    username {username}
     <TextField variant="outlined" margin="normal" fullWidth id="standard-basic" label="Username" value = {username} onChange = {updateUsername} />
     <TextField variant="outlined" margin="normal" fullWidth id="standard-basic"type='Password' label="Password" value = {password} onChange = {updatePassword} />
     <TextField variant="outlined" margin="normal" fullWidth id="standard-basic" label="First Name" value={firstName} onChange={updateFirstName} />
@@ -138,7 +143,7 @@ return(
     <TextField variant="outlined" margin="normal" fullWidth id="standard-basic" type='email' label="Email" value={email} onChange={updateEmail} />
     <TextField variant="outlined" margin="normal" fullWidth id="standard-basic" label="Role" value={role} onChange={updateRole} />
     <br /><br />
-    <Button variant="contained" type='submit'href="/EditMyProfile"> Save </Button>
+    <Button variant="contained" type='submit'> Save </Button>
     <br /><br />
     <br /><br />
     </form>
@@ -150,7 +155,7 @@ return(
       // <Redirect to = '/MyProfile/${(props.user.userId)'/>
 
 )}
-
+//href="/EditMyProfile"
         //    //if (props.user && props.user.role.role === 'SiteMember'){
 
         /*

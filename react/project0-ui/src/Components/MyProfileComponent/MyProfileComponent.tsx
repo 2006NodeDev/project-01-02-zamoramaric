@@ -1,4 +1,3 @@
-import {Redirect} from 'react-router-dom'
 import React, { FunctionComponent } from 'react'
 import {User} from '../../Models/User'
 import Typography from '@material-ui/core/Typography'
@@ -68,13 +67,14 @@ interface MyProfileProps{
                       Email: {props.user.email}
                     </Typography>
                     <br></br>
-                    <Button variant="outlined" color= 'inherit' href='/EditMyProfile' > Edit </Button>
+                    <Button variant="outlined" color= 'inherit' href = '/MyProfile/${props.user.userId}' > Edit </Button>
                     <br></br>
                     <br></br>
                 </Paper>
                 </Grid>
             </div>
             </Container>
+        
 
       // :
        // <Redirect to ='/login'/>

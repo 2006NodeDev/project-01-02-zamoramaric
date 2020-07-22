@@ -76,6 +76,7 @@ userRouter.patch('/', async (req:Request, res:Response, next:NextFunction) => {
             let result = await UpdatesToUser(updatedUserInfo)
             res.json(result)
         } catch (e) {
+            console.log(e)
             next(e)
         }
     }
