@@ -68,6 +68,8 @@ VALUES('Oklahoma','Oklahoma City','South','The Cave House'),
 
 ALTER TABLE users
 RENAME COLUMN "firstName" TO "first_name";
+ALTER TABLE users
+RENAME COLUMN "lastName" TO "last_name";
 
 ALTER TABLE users
 RENAME COLUMN "first_name" TO "firstName";

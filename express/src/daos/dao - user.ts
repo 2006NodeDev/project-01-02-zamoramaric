@@ -18,8 +18,8 @@ export async function getUserById(id: number):Promise<User> {
         let results = await client.query(`select u."user_id", 
         u ."username", 
         u."password", 
-        u."firstName" ,
-        u."lastName" ,
+        u."first_name" ,
+        u."last_name" ,
         u."email",
         r."role_id", 
         r."role" 
@@ -55,8 +55,8 @@ export async function getUserByUsernameAndPassword(username:string, password:str
         let results = await client.query(`select u."user_id", 
                 u."username" , 
                 u."password" ,   
-                u."firstName" ,
-                u."lastName" ,              
+                u."first_name" ,
+                u."last_name" ,              
                 u."email" ,
                 r."role_id" , 
                 r."role" 
@@ -92,8 +92,8 @@ export async function getAllUsers():Promise<User[]> {
         let results = await client.query(`select u."user_id", 
         u."username", 
         u."password", 
-        u."firstName",
-        u."lastName",
+        u."first_name",
+        u."last_name",
         u."email",
         r."role_id", 
         r."role" 
@@ -128,12 +128,12 @@ export async function UpdatesToUser(updatedUserInfo:User):Promise<User> {
                                     [updatedUserInfo.password, updatedUserInfo.userId])
         }
         if(updatedUserInfo.firstName) {
-            await client.query(`update project1.users set "firstName" = $1 
+            await client.query(`update project1.users set "first_name" = $1 
                                     where "user_id" = $2;`, 
                                     [updatedUserInfo.firstName, updatedUserInfo.userId])
         }
         if(updatedUserInfo.lastName) {
-            await client.query(`update project1.users set "lastName" = $1 
+            await client.query(`update project1.users set "last_name" = $1 
                                     where "user_id" = $2;`, 
                                     [updatedUserInfo.lastName, updatedUserInfo.userId])
         }
@@ -182,7 +182,7 @@ export async function saveNewUser(newUser:User):Promise<User>{
             throw new Error('Role Not Found')
         }
         roleId = roleId.rows[0].role_id
-        let results = await client.query(`insert into project1.users ("username", "password","firstName", "lastName","email","role")
+        let results = await client.query(`insert into project1.users ("username", "password","first_name", "last_name","email","role")
                                             values($1,$2,$3,$4,$5,$6) returning "user_id" `,//allows you to return some values from the rows in an insert, update or delete
                                             [newUser.username, newUser.password,newUser.firstName, newUser.lastName, newUser.email, roleId])
         newUser.userId = results.rows[0].user_id
